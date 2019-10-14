@@ -29,9 +29,9 @@ public class ProblemSet4 {
 
         //ps.sum();
         //ps.reverse();
-        ps.digits();
+        //ps.digits();
         //ps.average();
-        //ps.prime();
+        ps.prime();
         //ps.fibonacci();
         //ps.factors();
         //ps.mario();
@@ -129,7 +129,20 @@ public class ProblemSet4 {
      */
 
     public void average() {
-
+        System.out.print("\nNon-negative integer: ");
+        long nonNegativeInteger = in.nextLong();
+        long sum = 0;
+        int numberOfNumbers = 1;
+        do {
+            sum += nonNegativeInteger;
+            System.out.print("Non-negative integer: ");
+            nonNegativeInteger = in.nextLong();
+            if(nonNegativeInteger >= 0) {
+                numberOfNumbers ++;
+            }
+        } while (nonNegativeInteger >= 0);
+        double average = (double) sum / numberOfNumbers;
+        System.out.printf("%,.2f.", average);
     }
 
     /*
