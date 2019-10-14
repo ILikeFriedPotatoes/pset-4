@@ -52,10 +52,9 @@ public class ProblemSet4 {
      */
 
     public void sum() {
-        System.out.print("\nLower Bound: ");
-        long lowerBound = in.nextLong();
-        System.out.print("Upper Bound: ");
-        long upperBound = in.nextLong();
+        System.out.println("");
+        long lowerBound;
+        long upperBound;
         long sum = 0;
         do {
             System.out.print("Lower Bound: ");
@@ -152,7 +151,24 @@ public class ProblemSet4 {
      */
 
     public void prime() {
-
+        System.out.print("\n");
+        long nonNegativeInteger;
+        boolean isPrime = true;
+        do {
+            System.out.print("Non-negative integer: ");
+            nonNegativeInteger = in.nextLong();
+        } while(nonNegativeInteger < 0);
+        for(int i = 1; i < Math.ceil(Math.sqrt(nonNegativeInteger)); i++) {
+            double divisionTest = (double) nonNegativeInteger;
+            if(divisionTest % i == 0) {
+                isPrime = false;
+            }
+        }
+        if(isPrime) {
+            System.out.print("\nPrime.");
+        } else {
+            System.out.print("\nNot prime.");
+        }
     }
 
     /*
