@@ -85,7 +85,13 @@ public class ProblemSet4 {
             System.out.print("Positive Integer: ");
             positiveInteger = in.nextLong();
         } while(positiveInteger <= 0);
-
+        int lastDigit;
+        while(positiveInteger > 10) {
+            lastDigit = (int) (positiveInteger % 10);
+            System.out.printf("%d, ", lastDigit);
+            positiveInteger = (long) Math.floor(positiveInteger / 10);
+        }
+        System.out.printf("%d.", positiveInteger);
     }
 
     /*
