@@ -158,7 +158,7 @@ public class ProblemSet4 {
             System.out.print("Non-negative integer: ");
             nonNegativeInteger = in.nextLong();
         } while(nonNegativeInteger < 0);
-        for(int i = 1; i < Math.ceil(Math.sqrt(nonNegativeInteger)); i++) {
+        for(int i = 2; i < Math.floor(Math.sqrt(nonNegativeInteger)); i++) {
             double divisionTest = (double) nonNegativeInteger;
             if(divisionTest % i == 0) {
                 isPrime = false;
