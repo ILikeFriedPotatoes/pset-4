@@ -208,7 +208,7 @@ public class ProblemSet4 {
             System.out.print("Positive integer: ");
             integer = in.nextFloat();
         } while(integer < 1);
-        for(int i = 1; i < Math.ceil(Math.sqrt(integer)) + 1; i ++) {
+        for(int i = 1; i <= Math.floor(Math.sqrt(integer)); i ++) {
             if(integer % i == 0) {
                 long secondFactor = (long) integer / i;
                 System.out.printf("%d, %d, ", i, secondFactor);
