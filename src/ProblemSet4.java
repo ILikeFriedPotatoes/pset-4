@@ -32,8 +32,8 @@ public class ProblemSet4 {
         //ps.digits();
         //ps.average();
         //ps.prime();
-        ps.fibonacci();
-        //ps.factors();
+        //ps.fibonacci();
+        ps.factors();
         //ps.mario();
         //ps.luigi();
         //ps.credit();
@@ -202,7 +202,18 @@ public class ProblemSet4 {
      */
 
     public void factors() {
-
+        System.out.print("\n");
+        float integer = 0;
+        do {
+            System.out.print("Positive integer: ");
+            integer = in.nextFloat();
+        } while(integer < 1);
+        for(int i = 1; i < Math.ceil(Math.sqrt(integer)) + 1; i ++) {
+            if(integer % i == 0) {
+                long secondFactor = (long) integer / i;
+                System.out.printf("%d, %d, ", i, secondFactor);
+            }
+        }
     }
 
     /*
