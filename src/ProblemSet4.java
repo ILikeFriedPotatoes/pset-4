@@ -203,17 +203,25 @@ public class ProblemSet4 {
 
     public void factors() {
         System.out.print("\n");
-        float integer = 0;
+        long integer = 0;
         do {
             System.out.print("Positive integer: ");
-            integer = in.nextFloat();
+            integer = in.nextLong();
         } while(integer < 1);
         for(int i = 1; i <= Math.floor(Math.sqrt(integer)); i ++) {
+            //Use a string and add new parts to it.
             if(integer % i == 0) {
                 long secondFactor = (long) integer / i;
-                System.out.printf("%d, %d, ", i, secondFactor);
+                // Multi line comment here
+                    if(secondFactor == i) {
+                        System.out.printf("%d.", i);
+                    } else {
+                        System.out.printf("%d, %d", i, secondFactor);
+                    }
+                // Multi line comment here
             }
         }
+        System.out.print(".");
     }
 
     /*
