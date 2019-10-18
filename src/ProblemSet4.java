@@ -208,20 +208,25 @@ public class ProblemSet4 {
             System.out.print("Positive integer: ");
             integer = in.nextLong();
         } while(integer < 1);
-        for(int i = 1; i <= Math.floor(Math.sqrt(integer)); i ++) {
+        long secondFactor = 0;
+        int i;
+        for(i = 1; i <= Math.floor(Math.sqrt(integer)); i ++) {
             //Use a string and add new parts to it.
             if(integer % i == 0) {
-                long secondFactor = (long) integer / i;
-                // Multi line comment here
+                if(i != 1) {
+                    System.out.print(",");
+                }
+                secondFactor = (long) integer / i;
                     if(secondFactor == i) {
-                        System.out.printf("%d.", i);
-                    } else {
+                        System.out.printf(" %d.", i);
+                    } else if(i == 1) {
                         System.out.printf("%d, %d", i, secondFactor);
+                    } else {
+                        System.out.printf(" %d, %d", i, secondFactor);
                     }
-                // Multi line comment here
             }
         }
-        System.out.print(".");
+        if(secondFactor == i)System.out.print(".");
     }
 
     /*
