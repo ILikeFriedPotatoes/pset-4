@@ -33,9 +33,9 @@ public class ProblemSet4 {
         //ps.average();
         //ps.prime();
         //ps.fibonacci();
-        ps.factors();
+        //ps.factors();
         //ps.mario();
-        //ps.luigi();
+        ps.luigi();
         //ps.credit();
 
         in.close();
@@ -52,7 +52,7 @@ public class ProblemSet4 {
      */
 
     public void sum() {
-        System.out.println("");
+        System.out.println();
         long lowerBound;
         long upperBound;
         long sum = 0;
@@ -80,6 +80,7 @@ public class ProblemSet4 {
 
     public void reverse() {
         long positiveInteger = 0;
+        System.out.println("\n");
         do {
             System.out.print("Positive Integer: ");
             positiveInteger = in.nextLong();
@@ -102,7 +103,7 @@ public class ProblemSet4 {
 
     public void digits() {
         long positiveInteger = 0;
-        System.out.println("");
+        System.out.println("\n");
         do {
             System.out.print("Positive integer: ");
             positiveInteger = in.nextLong();
@@ -113,8 +114,8 @@ public class ProblemSet4 {
             if(lastDigit % 2 == 1) {
                 sum += lastDigit;
             }
-            lastDigit = (int) (positiveInteger % 10);
             positiveInteger = (long) Math.floor(positiveInteger / 10);
+            lastDigit = (int) (positiveInteger % 10);
         }
         System.out.printf("\n%d. ", sum);
     }
@@ -128,10 +129,10 @@ public class ProblemSet4 {
      */
 
     public void average() {
-        System.out.print("\nNon-negative integer: ");
-        long nonNegativeInteger = in.nextLong();
+        System.out.println("\n");
+        long nonNegativeInteger = 0;
         long sum = 0;
-        int numberOfNumbers = 1;
+        int numberOfNumbers = 0;
         do {
             sum += nonNegativeInteger;
             System.out.print("Non-negative integer: ");
@@ -151,7 +152,7 @@ public class ProblemSet4 {
      */
 
     public void prime() {
-        System.out.print("\n");
+        System.out.println("\n");
         long nonNegativeInteger;
         boolean isPrime = true;
         do {
@@ -179,7 +180,7 @@ public class ProblemSet4 {
      */
 
     public void fibonacci() {
-        System.out.print("\n");
+        System.out.println("\n");
         float integer;
         do {
             System.out.print("Positive integer: ");
@@ -202,7 +203,7 @@ public class ProblemSet4 {
      */
 
     public void factors() {
-        System.out.print("\n");
+        System.out.println("\n");
         long integer = 0;
         do {
             System.out.print("Positive integer: ");
@@ -224,9 +225,12 @@ public class ProblemSet4 {
                     } else {
                         System.out.printf(" %d, %d", i, secondFactor);
                     }
+                secondFactor = -1;
             }
         }
-        if(secondFactor == i)System.out.print(".");
+        if(secondFactor != i) {
+            System.out.print(".");
+        }
     }
 
     /*
@@ -237,7 +241,22 @@ public class ProblemSet4 {
      */
 
     public void mario() {
-
+        System.out.println("\n");
+        long height = 0;
+        do {
+            System.out.print("Height: ");
+            height = in.nextLong();
+        } while((height < 1) || (height > 24));
+        int i;
+        for(i = 0; i < height; i++) {
+            System.out.println();
+            for(int numberOfSpaces = 0; numberOfSpaces < (height - 1 - i); numberOfSpaces ++) {
+                System.out.print(" ");
+            }
+            for(int numberOfHashes = 0; numberOfHashes < (i + 2); numberOfHashes ++) {
+                System.out.print("#");
+            }
+        }
     }
 
     /*
@@ -248,7 +267,29 @@ public class ProblemSet4 {
      */
 
     public void luigi() {
-
+        System.out.println("\n");
+        long height = 0;
+        do {
+            System.out.print("Height: ");
+            height = in.nextLong();
+        } while((height < 1) || (height > 24));
+        int i;
+        for(i = 0; i < height; i++) {
+            System.out.println();
+            for(int numberOfSpaces = 0; numberOfSpaces < (height - 1 - i); numberOfSpaces ++) {
+                System.out.print(" ");
+            }
+            for(int numberOfHashes = 0; numberOfHashes < (i + 2); numberOfHashes ++) {
+                System.out.print("#");
+            }
+            System.out.print("  ");
+            for(int numberOfHashes = 0; numberOfHashes < (i + 2); numberOfHashes ++) {
+                System.out.print("#");
+            }
+            for(int numberOfSpaces = 0; numberOfSpaces < (height - 1 - i); numberOfSpaces ++) {
+                System.out.print(" ");
+            }
+        }
     }
 
     /*
