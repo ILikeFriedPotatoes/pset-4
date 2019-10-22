@@ -27,16 +27,16 @@ public class ProblemSet4 {
 
         // comment out or uncomment as needed
 
-        //ps.sum();
-        //ps.reverse();
-        //ps.digits();
-        //ps.average();
-        //ps.prime();
-        //ps.fibonacci();
-        //ps.factors();
+        ps.sum();
+        ps.reverse();
+        ps.digits();
+        ps.average();
+        ps.prime();
+        ps.fibonacci();
+        ps.factors();
         ps.mario();
-        //ps.luigi();
-        //ps.credit();
+        ps.luigi();
+        ps.credit();
 
         in.close();
     }
@@ -52,7 +52,7 @@ public class ProblemSet4 {
      */
 
     public void sum() {
-        System.out.println("");
+        System.out.println();
         long lowerBound;
         long upperBound;
         long sum = 0;
@@ -80,6 +80,7 @@ public class ProblemSet4 {
 
     public void reverse() {
         long positiveInteger = 0;
+        System.out.println("\n");
         do {
             System.out.print("Positive Integer: ");
             positiveInteger = in.nextLong();
@@ -102,7 +103,7 @@ public class ProblemSet4 {
 
     public void digits() {
         long positiveInteger = 0;
-        System.out.println("");
+        System.out.println("\n");
         do {
             System.out.print("Positive integer: ");
             positiveInteger = in.nextLong();
@@ -113,8 +114,8 @@ public class ProblemSet4 {
             if(lastDigit % 2 == 1) {
                 sum += lastDigit;
             }
-            lastDigit = (int) (positiveInteger % 10);
             positiveInteger = (long) Math.floor(positiveInteger / 10);
+            lastDigit = (int) (positiveInteger % 10);
         }
         System.out.printf("\n%d. ", sum);
     }
@@ -128,10 +129,10 @@ public class ProblemSet4 {
      */
 
     public void average() {
-        System.out.print("\nNon-negative integer: ");
-        long nonNegativeInteger = in.nextLong();
+        System.out.println("\n");
+        long nonNegativeInteger = 0;
         long sum = 0;
-        int numberOfNumbers = 1;
+        int numberOfNumbers = 0;
         do {
             sum += nonNegativeInteger;
             System.out.print("Non-negative integer: ");
@@ -151,7 +152,7 @@ public class ProblemSet4 {
      */
 
     public void prime() {
-        System.out.print("\n");
+        System.out.println("\n");
         long nonNegativeInteger;
         boolean isPrime = true;
         do {
@@ -179,7 +180,7 @@ public class ProblemSet4 {
      */
 
     public void fibonacci() {
-        System.out.print("\n");
+        System.out.println("\n");
         float integer;
         do {
             System.out.print("Positive integer: ");
@@ -202,7 +203,7 @@ public class ProblemSet4 {
      */
 
     public void factors() {
-        System.out.print("\n");
+        System.out.println("\n");
         long integer = 0;
         do {
             System.out.print("Positive integer: ");
@@ -224,9 +225,12 @@ public class ProblemSet4 {
                     } else {
                         System.out.printf(" %d, %d", i, secondFactor);
                     }
+                secondFactor = -1;
             }
         }
-        if(secondFactor == i)System.out.print(".");
+        if(secondFactor != i) {
+            System.out.print(".");
+        }
     }
 
     /*
@@ -237,7 +241,22 @@ public class ProblemSet4 {
      */
 
     public void mario() {
-
+        System.out.println("\n");
+        long height = 0;
+        do {
+            System.out.print("Height: ");
+            height = in.nextLong();
+        } while((height < 1) || (height > 24));
+        int i;
+        for(i = 0; i < height; i++) {
+            System.out.println();
+            for(int numberOfSpaces = 0; numberOfSpaces < (height - 1 - i); numberOfSpaces ++) {
+                System.out.print(" ");
+            }
+            for(int numberOfHashes = 0; numberOfHashes < (i + 2); numberOfHashes ++) {
+                System.out.print("#");
+            }
+        }
     }
 
     /*
@@ -248,7 +267,29 @@ public class ProblemSet4 {
      */
 
     public void luigi() {
-
+        System.out.println("\n");
+        long height = 0;
+        do {
+            System.out.print("Height: ");
+            height = in.nextLong();
+        } while((height < 1) || (height > 24));
+        int i;
+        for(i = 0; i < height; i++) {
+            System.out.println();
+            for(int numberOfSpaces = 0; numberOfSpaces < (height - 1 - i); numberOfSpaces ++) {
+                System.out.print(" ");
+            }
+            for(int numberOfHashes = 0; numberOfHashes < (i + 2); numberOfHashes ++) {
+                System.out.print("#");
+            }
+            System.out.print("  ");
+            for(int numberOfHashes = 0; numberOfHashes < (i + 2); numberOfHashes ++) {
+                System.out.print("#");
+            }
+            for(int numberOfSpaces = 0; numberOfSpaces < (height - 1 - i); numberOfSpaces ++) {
+                System.out.print(" ");
+            }
+        }
     }
 
     /*
@@ -259,6 +300,53 @@ public class ProblemSet4 {
      */
 
     public void credit() {
-
+        System.out.print("\n\nNumber: ");
+        final long CREDIT_CARD_NUMBER = in.nextLong();
+        System.out.println();
+        long creditCardNumber = CREDIT_CARD_NUMBER;
+        creditCardNumber = (long) Math.floor(creditCardNumber / 10);
+        long sumOfDigits = 0;
+        long everyOtherDigit;
+        //Lines  310 = 324 is Luhn's algorithm
+        while(creditCardNumber > 0) {
+            everyOtherDigit = (int) (creditCardNumber % 10);
+            everyOtherDigit *= 2;
+            creditCardNumber = (long) Math.floor(creditCardNumber / 100);
+            if(everyOtherDigit >= 10) {
+                sumOfDigits += everyOtherDigit % 10 + 1;
+            } else {
+                sumOfDigits += everyOtherDigit;
+            }
+        }
+        creditCardNumber = CREDIT_CARD_NUMBER;
+        while(creditCardNumber > 0) {
+            sumOfDigits += (creditCardNumber) % 10;
+            creditCardNumber = (long) Math.floor(creditCardNumber / 100);
+        }
+        //Calculates the amount of digits
+        creditCardNumber = CREDIT_CARD_NUMBER;
+        int digits = 0;
+        while(creditCardNumber > 0) {
+            creditCardNumber = (long) Math.floor(creditCardNumber / 10);
+            digits ++;
+        }
+        creditCardNumber = CREDIT_CARD_NUMBER;
+        long startingDigits = 0;
+        while(creditCardNumber > 100) {
+            creditCardNumber = (long) Math.floor(creditCardNumber / 10);
+            startingDigits = creditCardNumber % 100;
+        }
+        if(sumOfDigits % 10 != 0) {
+            System.out.print("Invalid.\n\n");
+        } else if((digits == 15) && (startingDigits == 34 || startingDigits == 37)) {
+            System.out.print("Amex.\n\n");
+        } else if((digits == 16) && ((startingDigits == 51) || (startingDigits == 52) || (startingDigits == 53) ||
+        (startingDigits == 54) || (startingDigits == 55))) {
+            System.out.print("Mastercard.\n\n");
+        } else if((digits == 13 || digits == 16) && ((Math.floor(startingDigits / 10)) == 4)) {
+            System.out.print("Visa.\n\n");
+        } else {
+            System.out.print("Invalid.\n\n");
+        }
     }
 }
