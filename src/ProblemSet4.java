@@ -27,16 +27,16 @@ public class ProblemSet4 {
 
         // comment out or uncomment as needed
 
-        //ps.sum();
-        //ps.reverse();
-        //ps.digits();
-        //ps.average();
-        //ps.prime();
-        //ps.fibonacci();
-        //ps.factors();
+        ps.sum();
+        ps.reverse();
+        ps.digits();
+        ps.average();
+        ps.prime();
+        ps.fibonacci();
+        ps.factors();
         ps.mario();
         ps.luigi();
-        //ps.credit();
+        ps.credit();
 
         in.close();
     }
@@ -343,7 +343,7 @@ public class ProblemSet4 {
         } else if((digits == 15) && (startingDigits == 34 || startingDigits == 37)) {
             System.out.print("Amex.\n\n");
         } else if((digits == 16) && ((startingDigits == 51) || (startingDigits == 52) || (startingDigits == 53) ||
-        (startingDigits == 54) || (startingDigits == 55))) {
+        (startingDigits == 54) || (startingDigits == 55)) ) {
             System.out.print("Mastercard.\n\n");
         } else if((digits == 13 || digits == 16) && ((Math.floor(startingDigits / 10)) == 4)) {
             System.out.print("Visa.\n\n");
