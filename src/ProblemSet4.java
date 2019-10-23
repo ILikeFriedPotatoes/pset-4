@@ -27,16 +27,16 @@ public class ProblemSet4 {
 
         // comment out or uncomment as needed
 
-        ps.sum();
-        ps.reverse();
-        ps.digits();
-        ps.average();
-        ps.prime();
-        ps.fibonacci();
-        ps.factors();
+        //ps.sum();
+        //ps.reverse();
+        //ps.digits();
+        //ps.average();
+        //ps.prime();
+        //ps.fibonacci();
+        //ps.factors();
         ps.mario();
         ps.luigi();
-        ps.credit();
+        //ps.credit();
 
         in.close();
     }
@@ -219,7 +219,7 @@ public class ProblemSet4 {
                 }
                 secondFactor = (long) integer / i;
                     if(secondFactor == i) {
-                        System.out.printf(" %d.", i);
+                        System.out.printf(" %d", i);
                     } else if(i == 1) {
                         System.out.printf("%d, %d", i, secondFactor);
                     } else {
@@ -228,9 +228,7 @@ public class ProblemSet4 {
                 secondFactor = -1;
             }
         }
-        if(secondFactor != i) {
-            System.out.print(".");
-        }
+        System.out.print(".");
     }
 
     /*
@@ -242,18 +240,20 @@ public class ProblemSet4 {
 
     public void mario() {
         System.out.println("\n");
-        long height = 0;
+        int height = 0;
         do {
             System.out.print("Height: ");
-            height = in.nextLong();
+            height = in.nextInt();
         } while((height < 1) || (height > 24));
         int i;
         for(i = 0; i < height; i++) {
             System.out.println();
-            for(int numberOfSpaces = 0; numberOfSpaces < (height - 1 - i); numberOfSpaces ++) {
+            int numberOfSpaces = height - 1 - i;
+            for(int j = 0; j < numberOfSpaces; j ++) {
                 System.out.print(" ");
             }
-            for(int numberOfHashes = 0; numberOfHashes < (i + 2); numberOfHashes ++) {
+            int numberOfHashes = i + 2;
+            for(int j = 0; j < numberOfHashes; j ++) {
                 System.out.print("#");
             }
         }
@@ -268,25 +268,27 @@ public class ProblemSet4 {
 
     public void luigi() {
         System.out.println("\n");
-        long height = 0;
+        int height = 0;
         do {
             System.out.print("Height: ");
-            height = in.nextLong();
+            height = in.nextInt();
         } while((height < 1) || (height > 24));
         int i;
         for(i = 0; i < height; i++) {
             System.out.println();
-            for(int numberOfSpaces = 0; numberOfSpaces < (height - 1 - i); numberOfSpaces ++) {
+            int numberOfSpaces = height - 1 - i;
+            for(int j = 0; j < numberOfSpaces; j ++) {
                 System.out.print(" ");
             }
-            for(int numberOfHashes = 0; numberOfHashes < (i + 2); numberOfHashes ++) {
+            int numberOfHashes = i + 2;
+            for(int j = 0; j < numberOfHashes; j ++) {
                 System.out.print("#");
             }
             System.out.print("  ");
-            for(int numberOfHashes = 0; numberOfHashes < (i + 2); numberOfHashes ++) {
+            for(int j = 0; j < numberOfHashes; j ++) {
                 System.out.print("#");
             }
-            for(int numberOfSpaces = 0; numberOfSpaces < (height - 1 - i); numberOfSpaces ++) {
+            for(int j = 0; j < numberOfSpaces; j ++) {
                 System.out.print(" ");
             }
         }
@@ -307,7 +309,7 @@ public class ProblemSet4 {
         creditCardNumber = (long) Math.floor(creditCardNumber / 10);
         long sumOfDigits = 0;
         long everyOtherDigit;
-        //Lines  310 = 324 is Luhn's algorithm
+        //Lines  310 - 324 is Luhn's algorithm
         while(creditCardNumber > 0) {
             everyOtherDigit = (int) (creditCardNumber % 10);
             everyOtherDigit *= 2;
