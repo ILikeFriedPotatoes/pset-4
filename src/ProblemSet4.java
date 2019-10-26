@@ -165,11 +165,11 @@ public class ProblemSet4 {
                 isPrime = false;
             }
         }
-        if(isPrime) {
-            System.out.print("\nPrime.");
-        } else {
-            System.out.print("\nNot prime.");
+        if(nonNegativeInteger == 1) {
+            isPrime = false;
         }
+        String result = (isPrime) ? "Prime." : "Not prime.";
+        System.out.printf("\n%s", result);
     }
 
     /*
@@ -217,7 +217,7 @@ public class ProblemSet4 {
                 if(i != 1) {
                     System.out.print(",");
                 }
-                secondFactor = (long) integer / i;
+                secondFactor = integer / i;
                     if(secondFactor == i) {
                         System.out.printf(" %d", i);
                     } else if(i == 1) {
@@ -225,7 +225,7 @@ public class ProblemSet4 {
                     } else {
                         System.out.printf(" %d, %d", i, secondFactor);
                     }
-                secondFactor = -1;
+                //secondFactor = -1;
             }
         }
         System.out.print(".");
@@ -306,19 +306,16 @@ public class ProblemSet4 {
         final long CREDIT_CARD_NUMBER = in.nextLong();
         System.out.println();
         long creditCardNumber = CREDIT_CARD_NUMBER;
-        creditCardNumber = (long) Math.floor(creditCardNumber / 10);
         long sumOfDigits = 0;
         long everyOtherDigit;
-        //Lines  310 - 324 is Luhn's algorithm
+        creditCardNumber = (long) Math.floor(creditCardNumber / 10);
+        //Find the "sum of the digits" with Luhn's algorithm.
         while(creditCardNumber > 0) {
             everyOtherDigit = (int) (creditCardNumber % 10);
             everyOtherDigit *= 2;
             creditCardNumber = (long) Math.floor(creditCardNumber / 100);
-            if(everyOtherDigit >= 10) {
-                sumOfDigits += everyOtherDigit % 10 + 1;
-            } else {
-                sumOfDigits += everyOtherDigit;
-            }
+            sumOfDigits = (everyOtherDigit >= 10) ? sumOfDigits + everyOtherDigit % 10 + 1: sumOfDigits +
+            everyOtherDigit;
         }
         creditCardNumber = CREDIT_CARD_NUMBER;
         while(creditCardNumber > 0) {
@@ -332,23 +329,19 @@ public class ProblemSet4 {
             creditCardNumber = (long) Math.floor(creditCardNumber / 10);
             digits ++;
         }
+        //Finds the first two digits of the credit card number
         creditCardNumber = CREDIT_CARD_NUMBER;
         long startingDigits = 0;
         while(creditCardNumber > 100) {
             creditCardNumber = (long) Math.floor(creditCardNumber / 10);
             startingDigits = creditCardNumber % 100;
         }
-        if(sumOfDigits % 10 != 0) {
-            System.out.print("Invalid.\n\n");
-        } else if((digits == 15) && (startingDigits == 34 || startingDigits == 37)) {
-            System.out.print("Amex.\n\n");
-        } else if((digits == 16) && ((startingDigits == 51) || (startingDigits == 52) || (startingDigits == 53) ||
-        (startingDigits == 54) || (startingDigits == 55)) ) {
-            System.out.print("Mastercard.\n\n");
-        } else if((digits == 13 || digits == 16) && ((Math.floor(startingDigits / 10)) == 4)) {
-            System.out.print("Visa.\n\n");
-        } else {
-            System.out.print("Invalid.\n\n");
-        }
+        //Decides the credit card type
+        String creditCardType = (sumOfDigits % 10 != 0) ? "Invalid" :
+        (digits == 15 && (startingDigits == 34 || startingDigits == 37)) ? "Amex" :
+        (digits == 16 && (startingDigits >= 51 && startingDigits <= 55)) ? "Mastercard" :
+        (digits == 13 || digits == 16) && (Math.floor(startingDigits / 10) == 4) ? "Visa" :
+        "Invalid";
+        System.out.printf("%s.\n\n", creditCardType);
     }
 }
